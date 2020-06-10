@@ -1,0 +1,177 @@
+The relevant ones for the TE and RIP landscape study are:
+
+```
+10397pb.order.fasta
+10752pb.order.corrected.fasta
+2503pb.order.corr.fasta
+2504pb.order.corr.fasta
+2508_Ntet_big_A.fasta
+2509_Ntet_small_a.fasta
+8579pb.order.fasta
+8761pb_Feb21.corr.order.fasta
+8767pb.corr.order.fasta
+8807pb.order.new.fasta
+8817pb.order.corr.fasta
+9045pb.order.corr.fasta
+9046pb.order.corr.fasta
+FGSC5940_BA_pacbio.fasta
+FGSC5941_sa_pacbio.fasta
+GSE71024_neurospora_crassa_or74a_12_genome_FIXED.fasta
+W1426pb.corr.order.fasta
+W1434pb.corr.order.fasta
+```
+
+# My working directory
+
+`/proj/sllstore2017101/nobackup/b2011231_nobackup/Valentina/SpecificTE`
+
+# Link the genomes to the Data folder
+```
+cd /proj/sllstore2017101/nobackup/b2011231_nobackup/Valentina/SpecificTE/Data/Genomes
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/genomes_fasta/10397pb.order.fasta 10397.fasta 
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/genomes_fasta/10752pb.order.corrected.fasta 10752.fasta
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/genomes_fasta/2503pb.order.corr.fasta 2503.fasta
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/genomes_fasta/2504pb.order.corr.fasta 2504.fasta
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/genomes_fasta/2508_Ntet_big_A.fasta 2508.fasta
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/genomes_fasta/2509_Ntet_small_a.fasta 2509.fasta
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/genomes_fasta/8579pb.order.fasta 8579.fasta
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/genomes_fasta/8761pb_Feb21.corr.order.fasta 8761.fasta
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/genomes_fasta/8767pb.corr.order.fasta 8767.fasta
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/genomes_fasta/8807pb.order.new.fasta 8807.fasta
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/genomes_fasta/8817pb.order.corr.fasta 8817.fasta
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/genomes_fasta/9045pb.order.corr.fasta 9045.fasta
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/genomes_fasta/9046pb.order.corr.fasta 9046.fasta
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/genomes_fasta/FGSC5940_BA_pacbio.fasta FGSC5940.fasta
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/genomes_fasta/FGSC5941_sa_pacbio.fasta FGSC5941.fasta
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/genomes_fasta/GSE71024_neurospora_crassa_or74a_12_genome_FIXED.fasta GSE71024.fasta
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/genomes_fasta/W1426pb.corr.order.fasta W1426.fasta
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/genomes_fasta/W1434pb.corr.order.fasta W1434.fasta
+```
+
+# Make the index files for each genome
+
+```
+ml bioinfo-tools samtools
+
+cd /proj/sllstore2017101/nobackup/b2011231_nobackup/Valentina/SpecificTE/Data/Genomes
+
+for genome in $( ls *.fasta )
+do
+  samtools faidx -i $genome > $genome.fai
+done
+```
+
+# Link RepeatMasker output
+```
+cd cd /proj/sllstore2017101/nobackup/b2011231_nobackup/Valentina/SpecificTE/Data/RMSK
+
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/RepeatMasker_GenomeSize/W1434pb.corr.order.fasta.out W1434.fasta.out
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/RepeatMasker_GenomeSize/W1426pb.corr.order.fasta.out W1426.fasta.out
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/RepeatMasker_GenomeSize/GSE71024_neurospora_crassa_or74a_12_genome_FIXED.fasta.out GSE71024.fasta.out
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/RepeatMasker_GenomeSize/FGSC5941_sa_pacbio.fasta.out FGSC5941.fasta.out
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/RepeatMasker_GenomeSize/FGSC5940_BA_pacbio.fasta.out FGSC5940.fasta.out
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/RepeatMasker_GenomeSize/9046pb.order.corr.fasta.out 9046.fasta.out
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/RepeatMasker_GenomeSize/9045pb.order.corr.fasta.out 9045.fasta.out
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/RepeatMasker_GenomeSize/8817pb.order.corr.fasta.out 8817.fasta.out
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/RepeatMasker_GenomeSize/8807pb.order.new.fasta.out 8807.fasta.out
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/RepeatMasker_GenomeSize/8767pb.corr.order.fasta.out 8767.fasta.out
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/RepeatMasker_GenomeSize/8761pb_Feb21.corr.order.fasta.out 8761.fasta.out
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/RepeatMasker_GenomeSize/8579pb.order.fasta.out 8579.fasta.out
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/RepeatMasker_GenomeSize/5941pb.order.fasta.out 5941.fasta.out
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/RepeatMasker_GenomeSize/5940pb.order.fasta.out 5940.fasta.out
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/RepeatMasker_GenomeSize/2509_Ntet_small_a.fasta.out 2509.fasta.out
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/RepeatMasker_GenomeSize/2508_Ntet_big_A.fasta.out 2508.fasta.out
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/RepeatMasker_GenomeSize/2504pb.order.corr.fasta.out 2504.fasta.out
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/RepeatMasker_GenomeSize/2503pb.order.corr.fasta.out 2503.fasta.out
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/RepeatMasker_GenomeSize/10752pb.order.corrected.fasta.out 10752.fasta.out
+
+ln -s /proj/sllstore2017101/nobackup/b2011231_nobackup/dieng296/RepeatMasker_GenomeSize/10397pb.order.fasta.out 10397.fasta.out
+```
+
+# Filter and reformat the RM output files
+
+## Reformat to BED file
+```
+cd /proj/sllstore2017101/nobackup/b2011231_nobackup/Valentina/SpecificTE/Data/RMSK
+
+## begin for loop
+for RMSK in $( ls *.fasta.out )
+do
+  /proj/sllstore2017101/nobackup/b2011231_nobackup/Valentina/SpecificTE/Code/RM2BED.sh -i $RMSK -o $RMSK.bed
+  
+  #**** ADD THE FILTERS HERE ****#
+  awk '$4~/LINE|SINE|LTR/' $RMSK.bed | cut -f4 | awk -F "__" '{print $1"__"NR}'> temp
+  awk '$4~/LINE|SINE|LTR/' $RMSK.bed > temp2
+  paste temp2 temp > $RMSK.bed.filter
+  
+  awk '$6~/+/' $RMSK.bed.filter > $RMSK.bed.sense
+  awk '$6~/-/' $RMSK.bed.filter > $RMSK.bed.antisense
+done
+## end for loop
+rm temp temp2
+```
+
+# Get the 3' and 5' flanks to the repeats
+
+## Bedtools flank
+
+```
+ml BEDTools
+
+cd /proj/sllstore2017101/nobackup/b2011231_nobackup/Valentina/SpecificTE/Data/Genomes
+
+DIR=/proj/sllstore2017101/nobackup/b2011231_nobackup/Valentina/SpecificTE/Data/Flanks
+
+ls *.fasta > ../RMSK/list_genomes
+
+cd ../RMSK/
+
+# begin for loop
+for genome in $( cat list_genomes )
+do
+  # antisense flanks
+  bedtools flank -g ../Genomes/$genome.fai -i $genome.out.bed.antisense -r 500 -l 0 -s | awk '$7=$7"_flank3"{print $0}' OFS="\t" > $DIR/$genome.out.bed.antisense.flank3
+  bedtools flank -g ../Genomes/$genome.fai -i $genome.out.bed.antisense -r 0 -l 500 -s | awk '$7=$7"_flank5"{print $0}' OFS="\t" > $DIR/$genome.out.bed.antisense.flank5
+  # sense flanks
+  bedtools flank -g ../Genomes/$genome.fai -i $genome.out.bed.antisense -r 500 -l 0 -s | awk '$7=$7"_flank3"{print $0}' OFS="\t" > $DIR/$genome.out.bed.sense.flank3
+  bedtools flank -g ../Genomes/$genome.fai -i $genome.out.bed.antisense -r 0 -l 500 -s | awk '$7=$7"_flank5"{print $0}' OFS="\t" > $DIR/$genome.out.bed.sense.flank5
+done
+# end for loop
+```
